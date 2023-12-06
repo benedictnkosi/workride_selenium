@@ -237,7 +237,7 @@ public class Main {
         if (isWindows()) {
             System.setProperty("webdriver.chrome.driver", "C:\\Users\\Dell\\IdeaProjects\\gs-serving-web-content\\getTravelTime\\src\\main\\resources\\windows\\chromedriver.exe");
         } else {
-            System.setProperty("webdriver.chrome.driver", "/chromedriver");
+            System.setProperty("webdriver.chrome.driver", "chromedriver");
         }
 
         ChromeOptions options = new ChromeOptions();
