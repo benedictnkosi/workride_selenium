@@ -6,6 +6,9 @@ import okhttp3.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
@@ -119,7 +122,7 @@ public class Main {
 
     public static String convertToMinutes(String input) {
         // Define the regular expression pattern
-        Pattern pattern = Pattern.compile("(\\d+) hr (\\d+) min|(\\d+) min");
+        Pattern pattern = Pattern.compile("(\\d+) hr(?: (\\d+) min)?|(\\d+) min");
 
         // Match the pattern against the input string
         Matcher matcher = pattern.matcher(input);
@@ -134,6 +137,7 @@ public class Main {
             int hours = (hoursGroup != null) ? Integer.parseInt(hoursGroup) : 0;
             int minutes = (minutesGroup1 != null) ? Integer.parseInt(minutesGroup1) :
                     (minutesGroup2 != null) ? Integer.parseInt(minutesGroup2) : 0;
+
 
             // Calculate total minutes
             return String.valueOf(hours * 60 + minutes);
@@ -230,19 +234,32 @@ public class Main {
     }
 
     private static WebDriver createLocalDriver() {
-        System.setProperty("webdriver.gecko.driver", getDriverAbsolutePath());
+        if (isWindows()) {
+            System.setProperty("webdriver.chrome.driver", "C:\\Users\\Dell\\IdeaProjects\\gs-serving-web-content\\getTravelTime\\src\\main\\resources\\windows\\chromedriver.exe");
+        } else {
+            System.setProperty("webdriver.chrome.driver", "/src/src/main/resources/linux/chromedriver");
+        }
 
-        // Create FirefoxOptions to customize the Firefox browser's behavior (optional).
-        FirefoxOptions options = new FirefoxOptions();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--remote-allow-origins=*");
+        //the sandbox removes unnecessary privileges from the processes that don't need them in Chrome, for security purposes. Disabling the sandbox makes your PC more vulnerable to exploits via webpages, so Google don't recommend it.
+        options.addArguments("--no-sandbox");
+        //"--disable-dev-shm-usage" Only added when CI system environment variable is set or when inside a docker instance. The /dev/shm partition is too small in certain VM environments, causing Chrome to fail or crash.
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--headless");
+        return new ChromeDriver(options);
+    }
 
-        // Create a FirefoxDriver instance with the specified options.
-        driver = new FirefoxDriver(options);
+    public static boolean isWindows() {
+        // Get the value of the "os.name" system property
+        String osName = System.getProperty("os.name");
 
-        return driver;
+        // Check if the operating system is Windows
+        return osName.toLowerCase().contains("win");
     }
 
     private static String getDriverAbsolutePath(){
-        URL res = com.sun.tools.javac.Main.class.getClassLoader().getResource("geckodriver.exe");
+        URL res = com.sun.tools.javac.Main.class.getClassLoader().getResource("chromedriver.exe");
         File file = null;
         try {
             assert res != null;
