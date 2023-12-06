@@ -11,6 +11,8 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.logging.LogType;
+import org.openqa.selenium.logging.LoggingPreferences;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -23,6 +25,7 @@ import java.nio.file.Paths;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -237,15 +240,19 @@ public class Main {
         if (isWindows()) {
             System.setProperty("webdriver.chrome.driver", "C:\\Users\\Dell\\IdeaProjects\\gs-serving-web-content\\getTravelTime\\src\\main\\resources\\windows\\chromedriver.exe");
         } else {
-            System.setProperty("webdriver.chrome.driver", "chromedriver");
+            System.setProperty("webdriver.chrome.driver", getDriverAbsolutePath());
         }
 
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
         //the sandbox removes unnecessary privileges from the processes that don't need them in Chrome, for security purposes. Disabling the sandbox makes your PC more vulnerable to exploits via webpages, so Google don't recommend it.
+        options.addArguments("headless");
+        options.addArguments("--disable-gpu");
+        options.addArguments("disable-infobars");
+        options.addArguments("--disable-extensions");
+        options.addArguments("window-size=1200x600");
         options.addArguments("--no-sandbox");
-        //"--disable-dev-shm-usage" Only added when CI system environment variable is set or when inside a docker instance. The /dev/shm partition is too small in certain VM environments, causing Chrome to fail or crash.
-        options.addArguments("--disable-dev-shm-usage");
+
         options.addArguments("--headless");
         return new ChromeDriver(options);
     }
@@ -259,7 +266,7 @@ public class Main {
     }
 
     private static String getDriverAbsolutePath(){
-        URL res = com.sun.tools.javac.Main.class.getClassLoader().getResource("chromedriver.exe");
+        URL res = com.sun.tools.javac.Main.class.getClassLoader().getResource("chromedriver");
         File file = null;
         try {
             assert res != null;
