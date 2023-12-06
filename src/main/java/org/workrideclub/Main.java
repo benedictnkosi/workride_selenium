@@ -2,6 +2,7 @@ package org.workrideclub;
 
 
 import dev.failsafe.internal.util.Assert;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import okhttp3.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -112,7 +113,7 @@ public class Main {
 
     public static String getTotalTime(String url){
         if(driver == null){
-            driver = createLocalDriver();
+            driver = createDriver();
             mapsPage = new MapsPage(driver);
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
             driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
@@ -236,12 +237,28 @@ public class Main {
         }
     }
 
-    private static WebDriver createLocalDriver() {
-        if (isWindows()) {
-            System.setProperty("webdriver.chrome.driver", "C:\\Users\\Dell\\IdeaProjects\\gs-serving-web-content\\getTravelTime\\src\\main\\resources\\windows\\chromedriver.exe");
-        } else {
-            System.setProperty("webdriver.chrome.driver", getDriverAbsolutePath());
+    private static WebDriver createDriver(){
+        WebDriverManager.chromedriver().setup();
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--remote-allow-origins=*");
+        //the sandbox removes unnecessary privileges from the processes that don't need them in Chrome, for security purposes. Disabling the sandbox makes your PC more vulnerable to exploits via webpages, so Google don't recommend it.
+        options.addArguments("--no-sandbox");
+        //"--disable-dev-shm-usage" Only added when CI system environment variable is set or when inside a docker instance. The /dev/shm partition is too small in certain VM environments, causing Chrome to fail or crash.
+        options.addArguments("--disable-dev-shm-usage");
+        if(!System.getProperty("os.name").contains("Windows")){
+            options.addArguments("--headless");
         }
+        driver = new ChromeDriver(options);
+        driver.manage().window().maximize();
+        return driver;
+    }
+
+    private static WebDriver createLocalDriver() {
+//        if (isWindows()) {
+//            System.setProperty("webdriver.chrome.driver", "C:\\Users\\Dell\\IdeaProjects\\gs-serving-web-content\\getTravelTime\\src\\main\\resources\\windows\\chromedriver.exe");
+//        } else {
+//            System.setProperty("webdriver.chrome.driver", getDriverAbsolutePath());
+//        }
 
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
@@ -253,8 +270,7 @@ public class Main {
         options.addArguments("window-size=1200x600");
         options.addArguments("--no-sandbox");
 
-        options.addArguments("--headless");
-        return new ChromeDriver(options);
+        return  new ChromeDriver(options);
     }
 
     public static boolean isWindows() {
@@ -266,7 +282,7 @@ public class Main {
     }
 
     private static String getDriverAbsolutePath(){
-        URL res = com.sun.tools.javac.Main.class.getClassLoader().getResource("chromedriver");
+        URL res = Main.class.getClassLoader().getResource("/drivers/chromedriver");
         File file = null;
         try {
             assert res != null;
