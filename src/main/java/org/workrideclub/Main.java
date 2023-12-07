@@ -120,8 +120,13 @@ public class Main {
             driver.manage().window().maximize();
         }
 
-        driver.get(url);
-        return mapsPage.getTime();
+        try{
+            driver.get(url);
+            return mapsPage.getTime();
+        }catch (Exception ex){
+            System.out.println("Error getting time");
+            return "0 min";
+        }
     }
 
     public static String convertToMinutes(String input) {
@@ -245,20 +250,16 @@ public class Main {
         options.addArguments("--no-sandbox");
         //"--disable-dev-shm-usage" Only added when CI system environment variable is set or when inside a docker instance. The /dev/shm partition is too small in certain VM environments, causing Chrome to fail or crash.
         options.addArguments("--disable-dev-shm-usage");
-        if(!System.getProperty("os.name").contains("Windows")){
+       // if(!System.getProperty("os.name").contains("Windows")){
             options.addArguments("--headless");
-        }
+       // }
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         return driver;
     }
 
     private static WebDriver createLocalDriver() {
-//        if (isWindows()) {
-//            System.setProperty("webdriver.chrome.driver", "C:\\Users\\Dell\\IdeaProjects\\gs-serving-web-content\\getTravelTime\\src\\main\\resources\\windows\\chromedriver.exe");
-//        } else {
-//            System.setProperty("webdriver.chrome.driver", getDriverAbsolutePath());
-//        }
+
 
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
