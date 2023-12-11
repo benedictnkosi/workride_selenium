@@ -108,7 +108,10 @@ public class Main {
         String passenger = String.valueOf(jsonObj.getInt("passenger"));
         String url = jsonObj.getString("url");
         String totalTime = convertToMinutes(getTotalTime(url));
-        saveMatch(driver, passenger, totalTime, url);
+        if(!totalTime.equals("0")){
+            saveMatch(driver, passenger, totalTime, url);
+        }
+
     }
 
     public static String getTotalTime(String url){
@@ -250,9 +253,9 @@ public class Main {
         options.addArguments("--no-sandbox");
         //"--disable-dev-shm-usage" Only added when CI system environment variable is set or when inside a docker instance. The /dev/shm partition is too small in certain VM environments, causing Chrome to fail or crash.
         options.addArguments("--disable-dev-shm-usage");
-       // if(!System.getProperty("os.name").contains("Windows")){
+        if(!System.getProperty("os.name").contains("Windows")){
             options.addArguments("--headless");
-       // }
+        }
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         return driver;
