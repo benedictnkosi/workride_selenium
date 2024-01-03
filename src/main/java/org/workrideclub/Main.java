@@ -9,11 +9,6 @@ import org.json.JSONObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxOptions;
-import org.openqa.selenium.logging.LogType;
-import org.openqa.selenium.logging.LoggingPreferences;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -26,7 +21,8 @@ import java.nio.file.Paths;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Level;
+import java.util.logging.LogManager;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -34,8 +30,13 @@ public class Main {
 
     static WebDriver driver;
     static MapsPage mapsPage;
+    private static final Logger logger = Logger.getLogger(Main.class.getName());
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+
+        LogManager.getLogManager().readConfiguration(
+                Main.class.getResourceAsStream("/logging.properties")
+        );
 
         while(true){
             addNewDriverTravelTime();
@@ -49,17 +50,18 @@ public class Main {
     }
 
     public static void addNewDriverTravelTime(){
+        logger.info("Adding new driver travel time");
         String message = getNewDrivers();
         JSONObject jsonObj = new JSONObject(message);
         if(jsonObj.isNull("commuters")){
-            System.out.println("No new drivers");
+            logger.info("No new drivers");
             return;
         }
         JSONArray newDrivers = new JSONArray(jsonObj.getString("commuters"));
 
         for(int i=0; i < newDrivers.length(); i++) {
             JSONObject driver = newDrivers.getJSONObject(i);
-            System.out.println("Driver name and id is " + driver.getString("name") + " " + + driver.getInt("id"));
+            logger.info("Driver name and id is " + driver.getString("name") + " " + + driver.getInt("id"));
             if(!driver.isNull("result_message")){
                 Assert.isTrue(driver.getInt("result_code") == 0, driver.getString("result_message"));
             }
@@ -76,6 +78,7 @@ public class Main {
     }
 
     public static void saveDriverTravelTime(String driver, String tripTime){
+        logger.info("Saving driver travel time");
         //body form data
         JSONObject body =new JSONObject();
         body.put("id", driver);
@@ -95,13 +98,14 @@ public class Main {
         try {
             Response response = client.newCall(request).execute();
             String message = response.body().string();
-            System.out.println(message);
+            logger.info(message);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
     public static void processFirstUnmatched(){
+        logger.info("Processing first unmatched");
         String message = getUnmatched();
         JSONObject jsonObj = new JSONObject(message);
         String driver = String.valueOf(jsonObj.getInt("driver"));
@@ -109,6 +113,7 @@ public class Main {
         String url = jsonObj.getString("url");
         String totalTime = convertToMinutes(getTotalTime(url));
         if(!totalTime.equals("0")){
+
             saveMatch(driver, passenger, totalTime, url);
         }
 
@@ -127,7 +132,7 @@ public class Main {
             driver.get(url);
             return mapsPage.getTime();
         }catch (Exception ex){
-            System.out.println("Error getting time");
+            logger.info("Error getting time");
             return "0 min";
         }
     }
@@ -180,7 +185,7 @@ public class Main {
 
             in.close();
             con.disconnect();
-            System.out.println(content);
+            logger.info(String.valueOf(content));
             return content.toString();
 
         } catch (IOException e) {
@@ -210,7 +215,7 @@ public class Main {
 
             in.close();
             con.disconnect();
-            System.out.println(content);
+            logger.info(String.valueOf(content));
             return content.toString();
 
         } catch (IOException e) {
@@ -219,6 +224,7 @@ public class Main {
 
     }
     public static void saveMatch(String driver, String passenger, String tripTime, String mapLink){
+        logger.info("Saving match");
         //body form data
         JSONObject body =new JSONObject();
         body.put("driver", driver);
@@ -239,7 +245,7 @@ public class Main {
         try {
             Response response = client.newCall(request).execute();
             String message = response.body().string();
-            System.out.println(message);
+            logger.info(message);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
