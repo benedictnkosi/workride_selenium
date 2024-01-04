@@ -288,7 +288,7 @@ public class Main {
             System.setProperty("webdriver.chrome.driver", "src/main/resources/windows/chromedriver.exe");
         }else{
             logger.info("This is a linux machine");
-            System.setProperty("webdriver.chrome.driver", "src/main/resources/linux/chromedriver");
+            System.setProperty("webdriver.chrome.driver", ":~/workridedistanceapi/src/main/resources/linux/chromedriver");
         }
 
         ChromeOptions options = new ChromeOptions();
@@ -297,7 +297,7 @@ public class Main {
         options.addArguments("--no-sandbox");
         //"--disable-dev-shm-usage" Only added when CI system environment variable is set or when inside a docker instance. The /dev/shm partition is too small in certain VM environments, causing Chrome to fail or crash.
         options.addArguments("--disable-dev-shm-usage");
-        if(!System.getProperty("os.name").contains("Windows")){
+        if(!isWindows()){
             options.addArguments("--headless");
         }
         driver = new ChromeDriver(options);
