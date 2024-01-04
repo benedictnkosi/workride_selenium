@@ -288,7 +288,7 @@ public class Main {
             System.setProperty("webdriver.chrome.driver", "src/main/resources/windows/chromedriver.exe");
         }else{
             logger.info("This is a linux machine");
-            System.setProperty("webdriver.chrome.driver", ":~/workridedistanceapi/src/main/resources/linux/chromedriver");
+            System.setProperty("webdriver.chrome.driver", "~/workridedistanceapi/src/main/resources/linux/chromedriver");
         }
 
         ChromeOptions options = new ChromeOptions();
