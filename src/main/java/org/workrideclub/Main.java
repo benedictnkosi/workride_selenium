@@ -30,8 +30,16 @@ public class Main {
     static WebDriver driver;
     static MapsPage mapsPage;
     private static final Logger logger = Logger.getLogger(Main.class.getName());
+    static String driverLocation = "";
 
     public static void main(String[] args) throws IOException {
+
+        if (args.length < 1) {
+            logger.info("Please provide the path to the chrome driver");
+            return;
+        }
+
+        driverLocation = args[0];
 
         LogManager.getLogManager().readConfiguration(
                 Main.class.getResourceAsStream("/logging.properties")
@@ -285,10 +293,10 @@ public class Main {
         logger.info("Creating driver");
         if(isWindows()) {
             logger.info("This is a windows machine");
-            System.setProperty("webdriver.chrome.driver", "src/main/resources/windows/chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver", driverLocation);
         }else{
             logger.info("This is a linux machine");
-            System.setProperty("webdriver.chrome.driver", "~/workridedistanceapi/src/main/resources/linux/chromedriver");
+            System.setProperty("webdriver.chrome.driver", driverLocation);
         }
 
         ChromeOptions options = new ChromeOptions();

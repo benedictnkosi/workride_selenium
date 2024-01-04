@@ -1,18 +1,18 @@
-Jan 04, 2024 3:16:13 PM org.workrideclub.Main saveMatch
-INFO: {"message":"Successfully saved match","code":"R00"}
-Jan 04, 2024 3:16:23 PM org.workrideclub.Main addNewDriverTravelTime
+Jan 04, 2024 3:30:05 PM org.workrideclub.Main addNewDriverTravelTime
 INFO: Adding new driver travel time
-Jan 04, 2024 3:16:24 PM org.workrideclub.Main getNewDrivers
+Jan 04, 2024 3:30:07 PM org.workrideclub.Main getNewDrivers
 INFO: {"message":"No commuters found","code":"R01"}
-Jan 04, 2024 3:16:24 PM org.workrideclub.Main addNewDriverTravelTime
+Jan 04, 2024 3:30:07 PM org.workrideclub.Main addNewDriverTravelTime
 INFO: No new drivers
-Jan 04, 2024 3:16:24 PM org.workrideclub.Main processFirstUnmatched
+Jan 04, 2024 3:30:07 PM org.workrideclub.Main processFirstUnmatched
 INFO: Processing first unmatched
-Jan 04, 2024 3:16:28 PM org.workrideclub.Main getUnmatched
-INFO: {"driver":327,"passenger":402,"url":"https:\/\/www.google.com\/maps\/dir\/-25.8217342,28.2063566\/-26.20803,27.89228\/-25.9163954,28.1667802\/-26.1041147,28.0532792"}
-Jan 04, 2024 3:16:28 PM org.workrideclub.Main getTotalTime
+Jan 04, 2024 3:30:13 PM org.workrideclub.Main getUnmatched
+INFO: {"driver":325,"passenger":409,"url":"https:\/\/www.google.com\/maps\/dir\/-26.3579158,28.1356863\/-26.1062701,27.8783251\/-26.0955458,27.9994681\/-26.0772666,28.1177336"}
+Jan 04, 2024 3:30:13 PM org.workrideclub.Main getTotalTime
 INFO: Getting total time
-Jan 04, 2024 3:16:30 PM org.workrideclub.Main saveMatch
-INFO: Saving match
-Jan 04, 2024 3:16:30 PM org.workrideclub.Main saveMatch
-INFO: {"message":"Successfully saved match","code":"R00"}
+Jan 04, 2024 3:30:13 PM org.workrideclub.Main createDriver
+INFO: Creating driver
+Jan 04, 2024 3:30:13 PM org.workrideclub.Main createDriver
+INFO: This is a windows machine
+Jan 04, 2024 3:30:14 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find an exact match for CDP version 120, returning the closest version; found: 117; Please update to a Selenium version that supports CDP version 120
