@@ -2,7 +2,6 @@ package org.workrideclub;
 
 
 import dev.failsafe.internal.util.Assert;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import okhttp3.*;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -140,13 +139,13 @@ public class Main {
         String driver = String.valueOf(jsonObj.getInt("driver"));
         String passenger = String.valueOf(jsonObj.getInt("passenger"));
         String url = jsonObj.getString("url");
-        String totalTime = convertToMinutes(getTotalTime(url));
+        String time = getTotalTime(url);
+        String totalTime = convertToMinutes(time);
         if(!totalTime.equals("0")){
             saveMatch(driver, passenger, totalTime, url);
         }else{
             updateCommuterStatus(driver, "deleted");
         }
-
     }
 
     public static String getTotalTime(String url){
@@ -284,7 +283,12 @@ public class Main {
 
     private static WebDriver createDriver(){
         logger.info("Creating driver");
-        WebDriverManager.chromedriver().setup();
+        if(isWindows()) {
+            System.setProperty("webdriver.chrome.driver", "src/main/resources/windows/chromedriver.exe");
+        }else{
+            System.setProperty("webdriver.chrome.driver", "src/main/resources/linux/chromedriver");
+        }
+
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
         //the sandbox removes unnecessary privileges from the processes that don't need them in Chrome, for security purposes. Disabling the sandbox makes your PC more vulnerable to exploits via webpages, so Google don't recommend it.
@@ -324,7 +328,7 @@ public class Main {
     }
 
     private static String getDriverAbsolutePath(){
-        URL res = Main.class.getClassLoader().getResource("/drivers/chromedriver");
+        URL res = Main.class.getClassLoader().getResource("/windows/chromedriver");
         File file = null;
         try {
             assert res != null;
