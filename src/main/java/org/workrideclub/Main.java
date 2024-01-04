@@ -73,6 +73,8 @@ public class Main {
             String totalTime = convertToMinutes(getTotalTime(url));
             if(!totalTime.equals("0")){
                 saveDriverTravelTime(String.valueOf(driver.getInt("id")), totalTime);
+            }else{
+                updateCommuterStatus(String.valueOf(driver.getInt("id")), "deleted");
             }
         }
     }
@@ -104,6 +106,33 @@ public class Main {
         }
     }
 
+    public static void updateCommuterStatus(String driver, String status){
+        logger.info("Saving driver travel time");
+        //body form data
+        JSONObject body =new JSONObject();
+        body.put("id", driver);
+        body.put("status",String.valueOf(status));
+
+        OkHttpClient client = new OkHttpClient().newBuilder()
+                .build();
+        Map<String, String> headers = new HashMap<>();
+        Headers headerBuild = Headers.of(headers);
+        MediaType mediaType = MediaType.parse("application/json");
+        RequestBody requestBody = RequestBody.create(mediaType, body.toString());
+        Request request = new Request.Builder()
+                .url("https://workride.co.za/api/update/commuter/status")
+                .method("PUT", requestBody)
+                .headers(headerBuild)
+                .build();
+        try {
+            Response response = client.newCall(request).execute();
+            String message = response.body().string();
+            logger.info(message);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public static void processFirstUnmatched(){
         logger.info("Processing first unmatched");
         String message = getUnmatched();
@@ -113,13 +142,15 @@ public class Main {
         String url = jsonObj.getString("url");
         String totalTime = convertToMinutes(getTotalTime(url));
         if(!totalTime.equals("0")){
-
             saveMatch(driver, passenger, totalTime, url);
+        }else{
+            updateCommuterStatus(driver, "deleted");
         }
 
     }
 
     public static String getTotalTime(String url){
+        logger.info("Getting total time");
         if(driver == null){
             driver = createDriver();
             mapsPage = new MapsPage(driver);
@@ -252,6 +283,7 @@ public class Main {
     }
 
     private static WebDriver createDriver(){
+        logger.info("Creating driver");
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
