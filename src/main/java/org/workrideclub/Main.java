@@ -284,8 +284,10 @@ public class Main {
     private static WebDriver createDriver(){
         logger.info("Creating driver");
         if(isWindows()) {
+            logger.info("This is a windows machine");
             System.setProperty("webdriver.chrome.driver", "src/main/resources/windows/chromedriver.exe");
         }else{
+            logger.info("This is a linux machine");
             System.setProperty("webdriver.chrome.driver", "src/main/resources/linux/chromedriver");
         }
 
