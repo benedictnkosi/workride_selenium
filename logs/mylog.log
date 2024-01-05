@@ -16,3 +16,311 @@ Jan 04, 2024 3:30:13 PM org.workrideclub.Main createDriver
 INFO: This is a windows machine
 Jan 04, 2024 3:30:14 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
 WARNING: Unable to find an exact match for CDP version 120, returning the closest version; found: 117; Please update to a Selenium version that supports CDP version 120
+Jan 04, 2024 3:30:20 PM org.workrideclub.Main saveMatch
+INFO: Saving match
+Jan 04, 2024 3:30:21 PM org.workrideclub.Main saveMatch
+INFO: {"message":"Successfully saved match","code":"R00"}
+Jan 04, 2024 3:30:31 PM org.workrideclub.Main addNewDriverTravelTime
+INFO: Adding new driver travel time
+Jan 04, 2024 3:30:31 PM org.workrideclub.Main getNewDrivers
+INFO: {"message":"No commuters found","code":"R01"}
+Jan 04, 2024 3:30:31 PM org.workrideclub.Main addNewDriverTravelTime
+INFO: No new drivers
+Jan 04, 2024 3:30:31 PM org.workrideclub.Main processFirstUnmatched
+INFO: Processing first unmatched
+Jan 04, 2024 3:30:36 PM org.workrideclub.Main getUnmatched
+INFO: {"driver":325,"passenger":410,"url":"https:\/\/www.google.com\/maps\/dir\/-26.3579158,28.1356863\/-26.3608754,28.2237998\/-26.0139402,28.1215716\/-26.0772666,28.1177336"}
+Jan 04, 2024 3:30:36 PM org.workrideclub.Main getTotalTime
+INFO: Getting total time
+Jan 04, 2024 3:30:38 PM org.workrideclub.Main saveMatch
+INFO: Saving match
+Jan 04, 2024 3:30:38 PM org.workrideclub.Main saveMatch
+INFO: {"message":"Successfully saved match","code":"R00"}
+Jan 04, 2024 3:30:48 PM org.workrideclub.Main addNewDriverTravelTime
+INFO: Adding new driver travel time
+Jan 04, 2024 3:30:49 PM org.workrideclub.Main getNewDrivers
+INFO: {"message":"No commuters found","code":"R01"}
+Jan 04, 2024 3:30:49 PM org.workrideclub.Main addNewDriverTravelTime
+INFO: No new drivers
+Jan 04, 2024 3:30:49 PM org.workrideclub.Main processFirstUnmatched
+INFO: Processing first unmatched
+Jan 04, 2024 3:30:52 PM org.workrideclub.Main getUnmatched
+INFO: {"driver":325,"passenger":412,"url":"https:\/\/www.google.com\/maps\/dir\/-26.3579158,28.1356863\/-26.3548845,28.2083531\/-25.7486159,28.1992712\/-26.0772666,28.1177336"}
+Jan 04, 2024 3:30:52 PM org.workrideclub.Main getTotalTime
+INFO: Getting total time
+Jan 04, 2024 3:30:54 PM org.workrideclub.Main saveMatch
+INFO: Saving match
+Jan 04, 2024 3:30:55 PM org.workrideclub.Main saveMatch
+INFO: {"message":"Successfully saved match","code":"R00"}
+Jan 04, 2024 3:31:05 PM org.workrideclub.Main addNewDriverTravelTime
+INFO: Adding new driver travel time
+Jan 04, 2024 3:31:05 PM org.workrideclub.Main getNewDrivers
+INFO: {"message":"No commuters found","code":"R01"}
+Jan 04, 2024 3:31:05 PM org.workrideclub.Main addNewDriverTravelTime
+INFO: No new drivers
+Jan 04, 2024 3:31:05 PM org.workrideclub.Main processFirstUnmatched
+INFO: Processing first unmatched
+Jan 04, 2024 3:31:14 PM org.workrideclub.Main getUnmatched
+INFO: {"driver":325,"passenger":413,"url":"https:\/\/www.google.com\/maps\/dir\/-26.3579158,28.1356863\/-26.236599,27.8406729\/-25.977988,28.129\/-26.0772666,28.1177336"}
+Jan 04, 2024 3:31:14 PM org.workrideclub.Main getTotalTime
+INFO: Getting total time
+Jan 04, 2024 3:31:16 PM org.workrideclub.Main saveMatch
+INFO: Saving match
+Jan 04, 2024 3:31:16 PM org.workrideclub.Main saveMatch
+INFO: {"message":"Successfully saved match","code":"R00"}
+Jan 04, 2024 3:31:26 PM org.workrideclub.Main addNewDriverTravelTime
+INFO: Adding new driver travel time
+Jan 04, 2024 3:31:26 PM org.workrideclub.Main getNewDrivers
+INFO: {"message":"No commuters found","code":"R01"}
+Jan 04, 2024 3:31:26 PM org.workrideclub.Main addNewDriverTravelTime
+INFO: No new drivers
+Jan 04, 2024 3:31:26 PM org.workrideclub.Main processFirstUnmatched
+INFO: Processing first unmatched
+Jan 04, 2024 3:31:30 PM org.workrideclub.Main getUnmatched
+INFO: {"driver":325,"passenger":417,"url":"https:\/\/www.google.com\/maps\/dir\/-26.3579158,28.1356863\/-26.2466405,27.8141784\/-26.1130769,28.0530617\/-26.0772666,28.1177336"}
+Jan 04, 2024 3:31:30 PM org.workrideclub.Main getTotalTime
+INFO: Getting total time
+Jan 04, 2024 3:31:32 PM org.workrideclub.Main saveMatch
+INFO: Saving match
+Jan 04, 2024 3:31:32 PM org.workrideclub.Main saveMatch
+INFO: {"message":"Successfully saved match","code":"R00"}
+Jan 04, 2024 3:31:42 PM org.workrideclub.Main addNewDriverTravelTime
+INFO: Adding new driver travel time
+Jan 04, 2024 3:31:43 PM org.workrideclub.Main getNewDrivers
+INFO: {"message":"No commuters found","code":"R01"}
+Jan 04, 2024 3:31:43 PM org.workrideclub.Main addNewDriverTravelTime
+INFO: No new drivers
+Jan 04, 2024 3:31:43 PM org.workrideclub.Main processFirstUnmatched
+INFO: Processing first unmatched
+Jan 04, 2024 3:31:48 PM org.workrideclub.Main getUnmatched
+INFO: {"driver":325,"passenger":418,"url":"https:\/\/www.google.com\/maps\/dir\/-26.3579158,28.1356863\/-26.4163919,27.864843\/-25.9987782,28.1236597\/-26.0772666,28.1177336"}
+Jan 04, 2024 3:31:48 PM org.workrideclub.Main getTotalTime
+INFO: Getting total time
+Jan 04, 2024 3:31:50 PM org.workrideclub.Main saveMatch
+INFO: Saving match
+Jan 04, 2024 3:31:50 PM org.workrideclub.Main saveMatch
+INFO: {"message":"Successfully saved match","code":"R00"}
+Jan 04, 2024 3:32:00 PM org.workrideclub.Main addNewDriverTravelTime
+INFO: Adding new driver travel time
+Jan 04, 2024 3:32:00 PM org.workrideclub.Main getNewDrivers
+INFO: {"message":"No commuters found","code":"R01"}
+Jan 04, 2024 3:32:00 PM org.workrideclub.Main addNewDriverTravelTime
+INFO: No new drivers
+Jan 04, 2024 3:32:00 PM org.workrideclub.Main processFirstUnmatched
+INFO: Processing first unmatched
+Jan 04, 2024 3:32:05 PM org.workrideclub.Main getUnmatched
+INFO: {"driver":325,"passenger":419,"url":"https:\/\/www.google.com\/maps\/dir\/-26.3579158,28.1356863\/-26.1305426,28.0830523\/-26.2050537,28.0470833\/-26.0772666,28.1177336"}
+Jan 04, 2024 3:32:05 PM org.workrideclub.Main getTotalTime
+INFO: Getting total time
+Jan 04, 2024 3:32:07 PM org.workrideclub.Main saveMatch
+INFO: Saving match
+Jan 04, 2024 3:32:07 PM org.workrideclub.Main saveMatch
+INFO: {"message":"Successfully saved match","code":"R00"}
+Jan 04, 2024 3:32:17 PM org.workrideclub.Main addNewDriverTravelTime
+INFO: Adding new driver travel time
+Jan 04, 2024 3:32:17 PM org.workrideclub.Main getNewDrivers
+INFO: {"message":"No commuters found","code":"R01"}
+Jan 04, 2024 3:32:17 PM org.workrideclub.Main addNewDriverTravelTime
+INFO: No new drivers
+Jan 04, 2024 3:32:17 PM org.workrideclub.Main processFirstUnmatched
+INFO: Processing first unmatched
+Jan 04, 2024 3:32:22 PM org.workrideclub.Main getUnmatched
+INFO: {"driver":325,"passenger":420,"url":"https:\/\/www.google.com\/maps\/dir\/-26.3579158,28.1356863\/-26.2523638,28.0898269\/-26.1602448,28.0761757\/-26.0772666,28.1177336"}
+Jan 04, 2024 3:32:22 PM org.workrideclub.Main getTotalTime
+INFO: Getting total time
+Jan 04, 2024 3:32:24 PM org.workrideclub.Main saveMatch
+INFO: Saving match
+Jan 04, 2024 3:32:24 PM org.workrideclub.Main saveMatch
+INFO: {"message":"Successfully saved match","code":"R00"}
+Jan 04, 2024 3:32:34 PM org.workrideclub.Main addNewDriverTravelTime
+INFO: Adding new driver travel time
+Jan 04, 2024 3:32:34 PM org.workrideclub.Main getNewDrivers
+INFO: {"message":"No commuters found","code":"R01"}
+Jan 04, 2024 3:32:34 PM org.workrideclub.Main addNewDriverTravelTime
+INFO: No new drivers
+Jan 04, 2024 3:32:34 PM org.workrideclub.Main processFirstUnmatched
+INFO: Processing first unmatched
+Jan 04, 2024 3:32:39 PM org.workrideclub.Main getUnmatched
+INFO: {"driver":325,"passenger":421,"url":"https:\/\/www.google.com\/maps\/dir\/-26.3579158,28.1356863\/-25.9027792,28.1482993\/-26.0164392,28.1119052\/-26.0772666,28.1177336"}
+Jan 04, 2024 3:32:39 PM org.workrideclub.Main getTotalTime
+INFO: Getting total time
+Jan 04, 2024 3:32:41 PM org.workrideclub.Main saveMatch
+INFO: Saving match
+Jan 04, 2024 3:32:42 PM org.workrideclub.Main saveMatch
+INFO: {"message":"Successfully saved match","code":"R00"}
+Jan 04, 2024 3:32:52 PM org.workrideclub.Main addNewDriverTravelTime
+INFO: Adding new driver travel time
+Jan 04, 2024 3:32:52 PM org.workrideclub.Main getNewDrivers
+INFO: {"message":"No commuters found","code":"R01"}
+Jan 04, 2024 3:32:52 PM org.workrideclub.Main addNewDriverTravelTime
+INFO: No new drivers
+Jan 04, 2024 3:32:52 PM org.workrideclub.Main processFirstUnmatched
+INFO: Processing first unmatched
+Jan 04, 2024 3:32:56 PM org.workrideclub.Main getUnmatched
+INFO: {"driver":325,"passenger":423,"url":"https:\/\/www.google.com\/maps\/dir\/-26.3579158,28.1356863\/-25.8003799,28.0904798\/-26.1629036,28.2081907\/-26.0772666,28.1177336"}
+Jan 04, 2024 3:32:56 PM org.workrideclub.Main getTotalTime
+INFO: Getting total time
+Jan 04, 2024 3:32:58 PM org.workrideclub.Main saveMatch
+INFO: Saving match
+Jan 04, 2024 3:32:58 PM org.workrideclub.Main saveMatch
+INFO: {"message":"Successfully saved match","code":"R00"}
+Jan 04, 2024 3:33:08 PM org.workrideclub.Main addNewDriverTravelTime
+INFO: Adding new driver travel time
+Jan 04, 2024 3:33:08 PM org.workrideclub.Main getNewDrivers
+INFO: {"message":"No commuters found","code":"R01"}
+Jan 04, 2024 3:33:08 PM org.workrideclub.Main addNewDriverTravelTime
+INFO: No new drivers
+Jan 04, 2024 3:33:08 PM org.workrideclub.Main processFirstUnmatched
+INFO: Processing first unmatched
+Jan 04, 2024 3:33:19 PM org.workrideclub.Main getUnmatched
+INFO: {"driver":325,"passenger":425,"url":"https:\/\/www.google.com\/maps\/dir\/-26.3579158,28.1356863\/-25.8503883,28.2005076\/-26.1027811,28.0527649\/-26.0772666,28.1177336"}
+Jan 04, 2024 3:33:19 PM org.workrideclub.Main getTotalTime
+INFO: Getting total time
+Jan 04, 2024 3:33:21 PM org.workrideclub.Main saveMatch
+INFO: Saving match
+Jan 04, 2024 3:33:21 PM org.workrideclub.Main saveMatch
+INFO: {"message":"Successfully saved match","code":"R00"}
+Jan 04, 2024 3:33:31 PM org.workrideclub.Main addNewDriverTravelTime
+INFO: Adding new driver travel time
+Jan 04, 2024 3:33:32 PM org.workrideclub.Main getNewDrivers
+INFO: {"message":"No commuters found","code":"R01"}
+Jan 04, 2024 3:33:32 PM org.workrideclub.Main addNewDriverTravelTime
+INFO: No new drivers
+Jan 04, 2024 3:33:32 PM org.workrideclub.Main processFirstUnmatched
+INFO: Processing first unmatched
+Jan 04, 2024 3:33:37 PM org.workrideclub.Main getUnmatched
+INFO: {"driver":325,"passenger":426,"url":"https:\/\/www.google.com\/maps\/dir\/-26.3579158,28.1356863\/-26.2780508,27.8513745\/-25.9958329,28.133016\/-26.0772666,28.1177336"}
+Jan 04, 2024 3:33:37 PM org.workrideclub.Main getTotalTime
+INFO: Getting total time
+Jan 04, 2024 3:33:39 PM org.workrideclub.Main saveMatch
+INFO: Saving match
+Jan 04, 2024 3:33:40 PM org.workrideclub.Main saveMatch
+INFO: {"message":"Successfully saved match","code":"R00"}
+Jan 04, 2024 3:33:50 PM org.workrideclub.Main addNewDriverTravelTime
+INFO: Adding new driver travel time
+Jan 04, 2024 3:33:50 PM org.workrideclub.Main getNewDrivers
+INFO: {"message":"No commuters found","code":"R01"}
+Jan 04, 2024 3:33:50 PM org.workrideclub.Main addNewDriverTravelTime
+INFO: No new drivers
+Jan 04, 2024 3:33:50 PM org.workrideclub.Main processFirstUnmatched
+INFO: Processing first unmatched
+Jan 04, 2024 3:33:54 PM org.workrideclub.Main getUnmatched
+INFO: {"driver":325,"passenger":427,"url":"https:\/\/www.google.com\/maps\/dir\/-26.3579158,28.1356863\/-25.8520522,28.201651\/-26.13232,28.14757\/-26.0772666,28.1177336"}
+Jan 04, 2024 3:33:54 PM org.workrideclub.Main getTotalTime
+INFO: Getting total time
+Jan 04, 2024 3:33:56 PM org.workrideclub.Main saveMatch
+INFO: Saving match
+Jan 04, 2024 3:33:56 PM org.workrideclub.Main saveMatch
+INFO: {"message":"Successfully saved match","code":"R00"}
+Jan 04, 2024 3:34:06 PM org.workrideclub.Main addNewDriverTravelTime
+INFO: Adding new driver travel time
+Jan 04, 2024 3:34:07 PM org.workrideclub.Main getNewDrivers
+INFO: {"message":"No commuters found","code":"R01"}
+Jan 04, 2024 3:34:07 PM org.workrideclub.Main addNewDriverTravelTime
+INFO: No new drivers
+Jan 04, 2024 3:34:07 PM org.workrideclub.Main processFirstUnmatched
+INFO: Processing first unmatched
+Jan 04, 2024 3:34:16 PM org.workrideclub.Main getUnmatched
+INFO: {"driver":319,"passenger":402,"url":"https:\/\/www.google.com\/maps\/dir\/-26.2005023,28.0403099\/-26.20803,27.89228\/-25.9163954,28.1667802\/-26.0319512,28.0797774"}
+Jan 04, 2024 3:34:16 PM org.workrideclub.Main getTotalTime
+INFO: Getting total time
+Jan 04, 2024 3:34:19 PM org.workrideclub.Main saveMatch
+INFO: Saving match
+Jan 04, 2024 3:34:20 PM org.workrideclub.Main saveMatch
+INFO: {"message":"Successfully saved match","code":"R00"}
+Jan 04, 2024 3:34:30 PM org.workrideclub.Main addNewDriverTravelTime
+INFO: Adding new driver travel time
+Jan 04, 2024 3:34:30 PM org.workrideclub.Main getNewDrivers
+INFO: {"message":"No commuters found","code":"R01"}
+Jan 04, 2024 3:34:30 PM org.workrideclub.Main addNewDriverTravelTime
+INFO: No new drivers
+Jan 04, 2024 3:34:30 PM org.workrideclub.Main processFirstUnmatched
+INFO: Processing first unmatched
+Jan 04, 2024 3:34:34 PM org.workrideclub.Main getUnmatched
+INFO: {"driver":319,"passenger":403,"url":"https:\/\/www.google.com\/maps\/dir\/-26.2005023,28.0403099\/-25.9706749,28.213729\/-26.1175219,28.0501936\/-26.0319512,28.0797774"}
+Jan 04, 2024 3:34:34 PM org.workrideclub.Main getTotalTime
+INFO: Getting total time
+Jan 04, 2024 3:34:36 PM org.workrideclub.Main saveMatch
+INFO: Saving match
+Jan 04, 2024 3:34:37 PM org.workrideclub.Main saveMatch
+INFO: {"message":"Successfully saved match","code":"R00"}
+Jan 04, 2024 3:34:47 PM org.workrideclub.Main addNewDriverTravelTime
+INFO: Adding new driver travel time
+Jan 04, 2024 3:34:47 PM org.workrideclub.Main getNewDrivers
+INFO: {"message":"No commuters found","code":"R01"}
+Jan 04, 2024 3:34:47 PM org.workrideclub.Main addNewDriverTravelTime
+INFO: No new drivers
+Jan 04, 2024 3:34:47 PM org.workrideclub.Main processFirstUnmatched
+INFO: Processing first unmatched
+Jan 04, 2024 3:34:55 PM org.workrideclub.Main getUnmatched
+INFO: {"driver":319,"passenger":404,"url":"https:\/\/www.google.com\/maps\/dir\/-26.2005023,28.0403099\/-26.1850305,28.0328483\/-25.8606138,28.2185433\/-26.0319512,28.0797774"}
+Jan 04, 2024 3:34:55 PM org.workrideclub.Main getTotalTime
+INFO: Getting total time
+Jan 04, 2024 3:34:57 PM org.workrideclub.Main saveMatch
+INFO: Saving match
+Jan 04, 2024 3:34:57 PM org.workrideclub.Main saveMatch
+INFO: {"message":"Successfully saved match","code":"R00"}
+Jan 04, 2024 3:35:07 PM org.workrideclub.Main addNewDriverTravelTime
+INFO: Adding new driver travel time
+Jan 04, 2024 3:35:07 PM org.workrideclub.Main getNewDrivers
+INFO: {"message":"No commuters found","code":"R01"}
+Jan 04, 2024 3:35:07 PM org.workrideclub.Main addNewDriverTravelTime
+INFO: No new drivers
+Jan 04, 2024 3:35:07 PM org.workrideclub.Main processFirstUnmatched
+INFO: Processing first unmatched
+Jan 04, 2024 3:35:11 PM org.workrideclub.Main getUnmatched
+INFO: {"driver":319,"passenger":405,"url":"https:\/\/www.google.com\/maps\/dir\/-26.2005023,28.0403099\/-25.6667369,28.086708\/-26.1069543,28.0535995\/-26.0319512,28.0797774"}
+Jan 04, 2024 3:35:11 PM org.workrideclub.Main getTotalTime
+INFO: Getting total time
+Jan 04, 2024 3:35:13 PM org.workrideclub.Main saveMatch
+INFO: Saving match
+Jan 04, 2024 3:35:13 PM org.workrideclub.Main saveMatch
+INFO: {"message":"Successfully saved match","code":"R00"}
+Jan 04, 2024 3:35:23 PM org.workrideclub.Main addNewDriverTravelTime
+INFO: Adding new driver travel time
+Jan 04, 2024 3:35:23 PM org.workrideclub.Main getNewDrivers
+INFO: {"message":"No commuters found","code":"R01"}
+Jan 04, 2024 3:35:23 PM org.workrideclub.Main addNewDriverTravelTime
+INFO: No new drivers
+Jan 04, 2024 3:35:23 PM org.workrideclub.Main processFirstUnmatched
+INFO: Processing first unmatched
+Jan 04, 2024 3:35:35 PM org.workrideclub.Main getUnmatched
+INFO: {"driver":319,"passenger":406,"url":"https:\/\/www.google.com\/maps\/dir\/-26.2005023,28.0403099\/-26.0035412,28.2272834\/-26.1031481,28.048157\/-26.0319512,28.0797774"}
+Jan 04, 2024 3:35:35 PM org.workrideclub.Main getTotalTime
+INFO: Getting total time
+Jan 04, 2024 3:35:37 PM org.workrideclub.Main saveMatch
+INFO: Saving match
+Jan 04, 2024 3:35:37 PM org.workrideclub.Main saveMatch
+INFO: {"message":"Successfully saved match","code":"R00"}
+Jan 04, 2024 3:35:47 PM org.workrideclub.Main addNewDriverTravelTime
+INFO: Adding new driver travel time
+Jan 04, 2024 3:35:47 PM org.workrideclub.Main getNewDrivers
+INFO: {"message":"No commuters found","code":"R01"}
+Jan 04, 2024 3:35:47 PM org.workrideclub.Main addNewDriverTravelTime
+INFO: No new drivers
+Jan 04, 2024 3:35:47 PM org.workrideclub.Main processFirstUnmatched
+INFO: Processing first unmatched
+Jan 04, 2024 3:35:50 PM org.workrideclub.Main getUnmatched
+INFO: {"driver":319,"passenger":408,"url":"https:\/\/www.google.com\/maps\/dir\/-26.2005023,28.0403099\/-26.1309236,27.8404499\/-25.9792622,28.0125109\/-26.0319512,28.0797774"}
+Jan 04, 2024 3:35:50 PM org.workrideclub.Main getTotalTime
+INFO: Getting total time
+Jan 04, 2024 3:35:51 PM org.workrideclub.Main saveMatch
+INFO: Saving match
+Jan 04, 2024 3:35:52 PM org.workrideclub.Main saveMatch
+INFO: {"message":"Successfully saved match","code":"R00"}
+Jan 04, 2024 3:36:02 PM org.workrideclub.Main addNewDriverTravelTime
+INFO: Adding new driver travel time
+Jan 04, 2024 3:36:02 PM org.workrideclub.Main getNewDrivers
+INFO: {"message":"No commuters found","code":"R01"}
+Jan 04, 2024 3:36:02 PM org.workrideclub.Main addNewDriverTravelTime
+INFO: No new drivers
+Jan 04, 2024 3:36:02 PM org.workrideclub.Main processFirstUnmatched
+INFO: Processing first unmatched
+Jan 04, 2024 3:36:10 PM org.workrideclub.Main getUnmatched
+INFO: {"driver":319,"passenger":409,"url":"https:\/\/www.google.com\/maps\/dir\/-26.2005023,28.0403099\/-26.1062701,27.8783251\/-26.0955458,27.9994681\/-26.0319512,28.0797774"}
+Jan 04, 2024 3:36:10 PM org.workrideclub.Main getTotalTime
+INFO: Getting total time
+Jan 04, 2024 3:36:12 PM org.workrideclub.Main saveMatch
+INFO: Saving match
+Jan 04, 2024 3:36:12 PM org.workrideclub.Main saveMatch
+INFO: {"message":"Successfully saved match","code":"R00"}

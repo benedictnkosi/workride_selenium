@@ -81,7 +81,7 @@ public class Main {
             if(!totalTime.equals("0")){
                 saveDriverTravelTime(String.valueOf(driver.getInt("id")), totalTime);
             }else{
-                updateCommuterStatus(String.valueOf(driver.getInt("id")), "deleted");
+                updateCommuterStatus(String.valueOf(driver.getInt("id")), "broken_address");
             }
         }
     }
@@ -152,7 +152,7 @@ public class Main {
         if(!totalTime.equals("0")){
             saveMatch(driver, passenger, totalTime, url);
         }else{
-            updateCommuterStatus(driver, "deleted");
+            updateCommuterStatus(driver, "broken_address");
         }
     }
 
