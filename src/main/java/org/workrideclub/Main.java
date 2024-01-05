@@ -143,6 +143,7 @@ public class Main {
     public static void processFirstUnmatched(){
         logger.info("Processing first unmatched");
         String message = getUnmatched();
+        logger.info(message);
         JSONObject jsonObj = new JSONObject(message);
         String driver = String.valueOf(jsonObj.getInt("driver"));
         String passenger = String.valueOf(jsonObj.getInt("passenger"));
