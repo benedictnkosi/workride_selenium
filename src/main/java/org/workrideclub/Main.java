@@ -153,7 +153,7 @@ public class Main {
         if(!totalTime.equals("0")){
             saveMatch(driver, passenger, totalTime, url);
         }else{
-            updateCommuterStatus(driver, "broken_address");
+            updateCommuterStatus(passenger, "broken_address");
         }
     }
 
