@@ -37,8 +37,8 @@ public class Main {
     public static void main(String[] args) throws IOException {
 
         try {
-            FileHandler fileHandler = new FileHandler(System.getProperty("user.dir") +
-                    "/logs/RemasteredServer_%u.log", false);
+            FileHandler fileHandler = new FileHandler(
+                    "./workridedistanceapi/logs/RemasteredServer_%u.log", false);
             fileHandler.setFormatter(new SimpleFormatter());
             Logger.getGlobal().addHandler(fileHandler);
         } catch (IOException e) {
