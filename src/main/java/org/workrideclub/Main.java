@@ -20,10 +20,8 @@ import java.nio.file.Paths;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.FileHandler;
 import java.util.logging.LogManager;
 import java.util.logging.Logger;
-import java.util.logging.SimpleFormatter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -31,22 +29,14 @@ public class Main {
 
     static WebDriver driver;
     static MapsPage mapsPage;
-    private static Logger logger = Logger.getLogger(Main.class.getName());
+    private static final Logger logger = Logger.getLogger(Main.class.getName());
     static String driverLocation = "";
 
     public static void main(String[] args) throws IOException {
 
-        try {
-            FileHandler fileHandler = new FileHandler(
-                    "./workridedistanceapi/logs/RemasteredServer_%u.log", false);
-            fileHandler.setFormatter(new SimpleFormatter());
-            Logger.getGlobal().addHandler(fileHandler);
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.exit(1);
-        }
-
-        logger = Logger.getLogger(Main.class.getName());
+        LogManager.getLogManager().readConfiguration(
+                Main.class.getResourceAsStream("/logging.properties")
+        );
 
         if (args.length < 1) {
             logger.info("Please provide the path to the chrome driver");
@@ -54,10 +44,6 @@ public class Main {
         }
 
         driverLocation = args[0];
-
-        LogManager.getLogManager().readConfiguration(
-                Main.class.getResourceAsStream("/logging.properties")
-        );
 
         while(true){
             addNewDriverTravelTime();
