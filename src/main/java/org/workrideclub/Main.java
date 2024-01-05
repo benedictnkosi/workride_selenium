@@ -304,19 +304,23 @@ public class Main {
             logger.info("This is a linux machine");
             System.setProperty("webdriver.chrome.driver", driverLocation);
         }
-
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
-        //the sandbox removes unnecessary privileges from the processes that don't need them in Chrome, for security purposes. Disabling the sandbox makes your PC more vulnerable to exploits via webpages, so Google don't recommend it.
-        options.addArguments("--no-sandbox");
-        //"--disable-dev-shm-usage" Only added when CI system environment variable is set or when inside a docker instance. The /dev/shm partition is too small in certain VM environments, causing Chrome to fail or crash.
-        options.addArguments("--disable-dev-shm-usage");
-        if(!isWindows()){
-            options.addArguments("--headless");
+        try{
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("--remote-allow-origins=*");
+            //the sandbox removes unnecessary privileges from the processes that don't need them in Chrome, for security purposes. Disabling the sandbox makes your PC more vulnerable to exploits via webpages, so Google don't recommend it.
+            options.addArguments("--no-sandbox");
+            //"--disable-dev-shm-usage" Only added when CI system environment variable is set or when inside a docker instance. The /dev/shm partition is too small in certain VM environments, causing Chrome to fail or crash.
+            options.addArguments("--disable-dev-shm-usage");
+            if(!isWindows()){
+                options.addArguments("--headless");
+            }
+            driver = new ChromeDriver(options);
+            driver.manage().window().maximize();
+            return driver;
+        } catch (Exception e) {
+            logger.info("Error creating driver " + e.getMessage());
+            throw new RuntimeException(e);
         }
-        driver = new ChromeDriver(options);
-        driver.manage().window().maximize();
-        return driver;
     }
 
     private static WebDriver createLocalDriver() {
