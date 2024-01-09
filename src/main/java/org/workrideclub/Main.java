@@ -45,7 +45,8 @@ public class Main {
 
         driverLocation = args[0];
 
-        while(true){
+        while (true) {
+            removeBrokenStatus();
             addNewDriverTravelTime();
             processFirstUnmatched();
             try {
@@ -56,42 +57,42 @@ public class Main {
         }
     }
 
-    public static void addNewDriverTravelTime(){
+    public static void addNewDriverTravelTime() {
         logger.info("Adding new driver travel time");
         String message = getNewDrivers();
         JSONObject jsonObj = new JSONObject(message);
-        if(jsonObj.isNull("commuters")){
+        if (jsonObj.isNull("commuters")) {
             logger.info("No new drivers");
             return;
         }
         JSONArray newDrivers = new JSONArray(jsonObj.getString("commuters"));
 
-        for(int i=0; i < newDrivers.length(); i++) {
+        for (int i = 0; i < newDrivers.length(); i++) {
             JSONObject driver = newDrivers.getJSONObject(i);
-            logger.info("Driver name and id is " + driver.getString("name") + " " + + driver.getInt("id"));
-            if(!driver.isNull("result_message")){
+            logger.info("Driver name and id is " + driver.getString("name") + " " + +driver.getInt("id"));
+            if (!driver.isNull("result_message")) {
                 Assert.isTrue(driver.getInt("result_code") == 0, driver.getString("result_message"));
             }
 
             JSONObject workAddress = driver.getJSONObject("work_address");
             JSONObject homeAddress = driver.getJSONObject("home_address");
 
-            String url = "https://www.google.com/maps/dir/"+homeAddress.getString("latitude")+","+homeAddress.getString("longitude")+"/"+workAddress.getString("latitude")+","+workAddress.getString("longitude");
+            String url = "https://www.google.com/maps/dir/" + homeAddress.getString("latitude") + "," + homeAddress.getString("longitude") + "/" + workAddress.getString("latitude") + "," + workAddress.getString("longitude");
             String totalTime = convertToMinutes(getTotalTime(url));
-            if(!totalTime.equals("0")){
+            if (!totalTime.equals("0")) {
                 saveDriverTravelTime(String.valueOf(driver.getInt("id")), totalTime);
-            }else{
+            } else {
                 updateCommuterStatus(String.valueOf(driver.getInt("id")), "broken_address");
             }
         }
     }
 
-    public static void saveDriverTravelTime(String driver, String tripTime){
+    public static void saveDriverTravelTime(String driver, String tripTime) {
         logger.info("Saving driver travel time");
         //body form data
-        JSONObject body =new JSONObject();
+        JSONObject body = new JSONObject();
         body.put("id", driver);
-        body.put("travel_time",String.valueOf(tripTime));
+        body.put("travel_time", String.valueOf(tripTime));
 
         OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
@@ -113,12 +114,12 @@ public class Main {
         }
     }
 
-    public static void updateCommuterStatus(String driver, String status){
+    public static void updateCommuterStatus(String driver, String status) {
         logger.info("Saving driver travel time");
         //body form data
-        JSONObject body =new JSONObject();
+        JSONObject body = new JSONObject();
         body.put("id", driver);
-        body.put("status",String.valueOf(status));
+        body.put("status", String.valueOf(status));
 
         OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
@@ -140,7 +141,32 @@ public class Main {
         }
     }
 
-    public static void processFirstUnmatched(){
+    public static void removeBrokenStatus() {
+        logger.info("removeBrokenStatus");
+        //body form data
+        JSONObject body = new JSONObject();
+
+        OkHttpClient client = new OkHttpClient().newBuilder()
+                .build();
+        Map<String, String> headers = new HashMap<>();
+        Headers headerBuild = Headers.of(headers);
+        MediaType mediaType = MediaType.parse("application/json");
+        RequestBody requestBody = RequestBody.create(mediaType, body.toString());
+        Request request = new Request.Builder()
+                .url("https://workride.co.za/api/remove/broken")
+                .method("PUT", requestBody)
+                .headers(headerBuild)
+                .build();
+        try {
+            Response response = client.newCall(request).execute();
+            String message = response.body().string();
+            logger.info(message);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static void processFirstUnmatched() {
         logger.info("Processing first unmatched");
         String message = getUnmatched();
         logger.info(message);
@@ -150,32 +176,32 @@ public class Main {
         String url = jsonObj.getString("url");
         String time = getTotalTime(url);
         String totalTime = convertToMinutes(time);
-        if(!totalTime.equals("0")){
+        if (!totalTime.equals("0")) {
             saveMatch(driver, passenger, totalTime, url);
-        }else{
+        } else {
             updateCommuterStatus(passenger, "broken_address");
         }
     }
 
-    public static String getTotalTime(String url){
+    public static String getTotalTime(String url) {
         logger.info("Getting total time");
-        try{
+        try {
 
-        if(driver == null){
-            logger.info("Creating chrome driver");
-            driver = createDriver();
-            mapsPage = new MapsPage(driver);
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
-            driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
-            driver.manage().window().maximize();
-            logger.info("Done Creating chrome driver");
-        }
+            if (driver == null) {
+                logger.info("Creating chrome driver");
+                driver = createDriver();
+                mapsPage = new MapsPage(driver);
+                driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
+                driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
+                driver.manage().window().maximize();
+                logger.info("Done Creating chrome driver");
+            }
 
 
             driver.get(url);
             logger.info("Done getting url");
             return mapsPage.getTime();
-        }catch (Exception ex){
+        } catch (Exception ex) {
             logger.info("Error getting time " + ex.getMessage());
             return "0 min";
         }
@@ -267,14 +293,15 @@ public class Main {
         }
 
     }
-    public static void saveMatch(String driver, String passenger, String tripTime, String mapLink){
+
+    public static void saveMatch(String driver, String passenger, String tripTime, String mapLink) {
         logger.info("Saving match");
         //body form data
-        JSONObject body =new JSONObject();
+        JSONObject body = new JSONObject();
         body.put("driver", driver);
-        body.put("passenger",passenger);
-        body.put("totalTrip",String.valueOf(tripTime));
-        body.put("mapLink",mapLink);
+        body.put("passenger", passenger);
+        body.put("totalTrip", String.valueOf(tripTime));
+        body.put("mapLink", mapLink);
         OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
         Map<String, String> headers = new HashMap<>();
@@ -295,23 +322,23 @@ public class Main {
         }
     }
 
-    private static WebDriver createDriver(){
+    private static WebDriver createDriver() {
         logger.info("Creating driver");
-        if(isWindows()) {
+        if (isWindows()) {
             logger.info("This is a windows machine");
             System.setProperty("webdriver.chrome.driver", driverLocation);
-        }else{
+        } else {
             logger.info("This is a linux machine");
             System.setProperty("webdriver.chrome.driver", driverLocation);
         }
-        try{
+        try {
             ChromeOptions options = new ChromeOptions();
             options.addArguments("--remote-allow-origins=*");
             //the sandbox removes unnecessary privileges from the processes that don't need them in Chrome, for security purposes. Disabling the sandbox makes your PC more vulnerable to exploits via webpages, so Google don't recommend it.
             options.addArguments("--no-sandbox");
             //"--disable-dev-shm-usage" Only added when CI system environment variable is set or when inside a docker instance. The /dev/shm partition is too small in certain VM environments, causing Chrome to fail or crash.
             options.addArguments("--disable-dev-shm-usage");
-            if(!isWindows()){
+            if (!isWindows()) {
                 options.addArguments("--headless");
             }
             driver = new ChromeDriver(options);
@@ -336,7 +363,7 @@ public class Main {
         options.addArguments("window-size=1200x600");
         options.addArguments("--no-sandbox");
 
-        return  new ChromeDriver(options);
+        return new ChromeDriver(options);
     }
 
     public static boolean isWindows() {
@@ -347,7 +374,7 @@ public class Main {
         return osName.toLowerCase().contains("win");
     }
 
-    private static String getDriverAbsolutePath(){
+    private static String getDriverAbsolutePath() {
         URL res = Main.class.getClassLoader().getResource("/windows/chromedriver");
         File file = null;
         try {
