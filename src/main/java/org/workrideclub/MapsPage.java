@@ -13,11 +13,12 @@ public class MapsPage {
 
     public String getTime() {
         String time = "0 min";
-        try{
-            By by = By.xpath("//span[@id='section-directions-trip-travel-mode-0']/following-sibling::div//div[contains(@class,'fontHeadlineSmall')]");
+        try {
+            By by = By.xpath(
+                    "//span[@id='section-directions-trip-travel-mode-0']/following-sibling::div//div[contains(@class,'fontHeadlineSmall')]");
             time = driver.findElement(by).getText();
             return time;
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("No time found");
             return time;
         }
