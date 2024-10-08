@@ -35,7 +35,7 @@ public class Utils {
         if (isWindows()) {
             hostName = "http://localhost:8000";
         } else {
-            hostName = "https://workrideclub.io";
+            hostName = "https://ride.hotelrunner.co.za";
         }
     }
 
