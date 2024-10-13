@@ -28,7 +28,7 @@ public class Utils {
     static WebDriver driver;
     static MapsPage mapsPage;
     private static final Logger logger = Logger.getLogger(Utils.class.getName());
-    static String driverLocation = "src\\main\\resources\\windows\\chromedriver.exe";
+
     static String hostName;
 
     static {
@@ -332,9 +332,11 @@ public class Utils {
         logger.info("Creating driver");
         if (isWindows()) {
             logger.info("This is a windows machine");
+            String driverLocation = "src\\main\\resources\\windows\\chromedriver.exe";
             System.setProperty("webdriver.chrome.driver", driverLocation);
         } else {
             logger.info("This is a linux machine");
+            String driverLocation = "src\\main\\resources\\linux\\chrome";
             System.setProperty("webdriver.chrome.driver", driverLocation);
         }
         try {
