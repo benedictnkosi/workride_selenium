@@ -170,7 +170,10 @@ public class Utils {
     public static void processFirstUnmatched() {
         logger.info("Processing first unmatched");
         String message = getUnmatched();
-        logger.info(message);
+        if (message.equals("[]")) {
+            logger.info("No unmatched commuters");
+            return;
+        }
         try {
             JSONObject jsonObj = new JSONObject(message);
             String driver = String.valueOf(jsonObj.getInt("driver"));
