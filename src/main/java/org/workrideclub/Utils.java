@@ -352,6 +352,18 @@ public class Utils {
             options.addArguments("--disable-dev-shm-usage");
             if (!isWindows()) {
                 options.addArguments("--headless");
+                options.addArguments("--remote-allow-origins=*");
+                options.addArguments("--no-sandbox");
+                options.addArguments("--disable-dev-shm-usage");
+                options.addArguments("--disable-gpu");
+                options.addArguments("--window-size=1920,1080");
+                options.addArguments("--disable-extensions");
+                options.addArguments("--disable-software-rasterizer");
+                options.addArguments("--disable-dev-shm-usage");
+                options.addArguments("--disable-setuid-sandbox");
+                options.addArguments("--disable-accelerated-2d-canvas");
+                options.addArguments("--disable-accelerated-video");
+                options.addArguments("--disable-accelerated-video-decode");
             }
             driver = new ChromeDriver(options);
             driver.manage().window().maximize();
