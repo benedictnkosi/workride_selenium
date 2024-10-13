@@ -341,15 +341,13 @@ public class Utils {
         }
         try {
             ChromeOptions options = new ChromeOptions();
+            options.addArguments("--headless"); // Run in headless mode
+            options.addArguments("--disable-gpu"); // Disable GPU in headless environments
+            options.addArguments("--no-sandbox"); // Disable sandboxing
+            options.addArguments("--disable-dev-shm-usage"); // Use /tmp for shared memory
+            options.addArguments("--disable-software-rasterizer");
             options.addArguments("--remote-allow-origins=*");
-            // the sandbox removes unnecessary privileges from the processes that don't need
-            // them in Chrome, for security purposes. Disabling the sandbox makes your PC
-            // more vulnerable to exploits via webpages, so Google don't recommend it.
-            options.addArguments("--no-sandbox");
-            // "--disable-dev-shm-usage" Only added when CI system environment variable is
-            // set or when inside a docker instance. The /dev/shm partition is too small in
-            // certain VM environments, causing Chrome to fail or crash.
-            options.addArguments("--disable-dev-shm-usage");
+            options.addArguments("--remote-debugging-port=9222");
             if (!isWindows()) {
                 options.addArguments("--disable-gpu");
                 options.addArguments("--headless");
