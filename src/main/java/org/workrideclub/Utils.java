@@ -336,7 +336,7 @@ public class Utils {
             System.setProperty("webdriver.chrome.driver", driverLocation);
         } else {
             logger.info("This is a linux machine");
-            String driverLocation = "src\\main\\resources\\linux\\chromedriver";
+            String driverLocation = "src/main/resources/linux/chromedriver";
             System.setProperty("webdriver.chrome.driver", driverLocation);
         }
         try {
