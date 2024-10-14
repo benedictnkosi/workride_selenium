@@ -45,7 +45,7 @@ public class Utils {
                 Utils.class.getResourceAsStream("/logging.properties"));
 
         while (true) {
-            // removeBrokenStatus();
+            removeBrokenStatus();
             addNewCommutersTravelTime();
             processFirstUnmatched();
             try {
@@ -210,7 +210,7 @@ public class Utils {
 
             driver.get(url);
             logger.info("Done getting url");
-            Thread.sleep(30000);
+            // Thread.sleep(30000);
             return mapsPage.getTime();
         } catch (Exception ex) {
             logger.info("Error getting time " + ex.getMessage());
