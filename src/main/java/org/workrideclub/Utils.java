@@ -32,8 +32,8 @@ public class Utils {
     static String hostName;
 
     static {
-        if (isWindows()) {
-            hostName = "http://localhost:8000";
+        if (!isWindows()) {
+            hostName = "https://ride.hotelrunner.co.za";
         } else {
             hostName = "https://ride.hotelrunner.co.za";
         }
