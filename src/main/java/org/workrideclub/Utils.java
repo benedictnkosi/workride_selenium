@@ -32,7 +32,7 @@ public class Utils {
     static String hostName;
 
     static {
-        if (isWindows()) {
+        if (!isWindows()) {
             hostName = "http://localhost:8000";
         } else {
             hostName = "https://ride.hotelrunner.co.za";
@@ -46,7 +46,7 @@ public class Utils {
 
         while (true) {
             // removeBrokenStatus();
-            addNewDriverTravelTime();
+            addNewCommutersTravelTime();
             processFirstUnmatched();
             try {
                 Thread.sleep(10000);
@@ -56,43 +56,46 @@ public class Utils {
         }
     }
 
-    public static void addNewDriverTravelTime() {
-        logger.info("Adding new driver travel time");
-        String message = getNewDrivers();
+    public static void addNewCommutersTravelTime() {
+        logger.info("Adding new commuter travel time");
+        String message = getNewCommuters();
         JSONObject jsonObj = new JSONObject(message);
         if (jsonObj.isNull("commuters")) {
-            logger.info("No new drivers");
+            logger.info("No new commuters");
             return;
         }
-        JSONArray newDrivers = new JSONArray(jsonObj.getString("commuters"));
 
-        for (int i = 0; i < newDrivers.length(); i++) {
-            JSONObject driver = newDrivers.getJSONObject(i);
-            logger.info("Driver name and id is " + driver.getString("name") + " " + +driver.getInt("id"));
-            if (!driver.isNull("result_message")) {
-                Assert.isTrue(driver.getInt("result_code") == 0, driver.getString("result_message"));
+        JSONArray newCommuters = new JSONArray(jsonObj.getString("commuters"));
+
+        for (int i = 0; i < newCommuters.length(); i++) {
+            JSONObject commuter = newCommuters.getJSONObject(i);
+            logger.info("Commuter name and id is " + commuter.getString("name") + " " + +commuter.getInt("id"));
+            if (!commuter.isNull("result_message")) {
+                Assert.isTrue(commuter.getInt("result_code") == 0, commuter.getString("result_message"));
             }
 
-            JSONObject workAddress = driver.getJSONObject("work_address");
-            JSONObject homeAddress = driver.getJSONObject("home_address");
+            JSONObject workAddress = commuter.getJSONObject("work_address");
+            JSONObject homeAddress = commuter.getJSONObject("home_address");
 
             String url = "https://www.google.com/maps/dir/" + homeAddress.getString("latitude") + ","
                     + homeAddress.getString("longitude") + "/" + workAddress.getString("latitude") + ","
                     + workAddress.getString("longitude");
+            logger.info("URL is " + url);
             String totalTime = convertToMinutes(getTotalTime(url));
+            logger.info("total time " + totalTime);
             if (!totalTime.equals("0")) {
-                saveDriverTravelTime(String.valueOf(driver.getInt("id")), totalTime);
+                saveCommuterTravelTime(String.valueOf(commuter.getInt("id")), totalTime);
             } else {
-                updateCommuterStatus(String.valueOf(driver.getInt("id")), "broken_address");
+                updateCommuterStatus(String.valueOf(commuter.getInt("id")), "broken_address");
             }
         }
     }
 
-    public static void saveDriverTravelTime(String driver, String tripTime) {
+    public static void saveCommuterTravelTime(String commuter, String tripTime) {
         logger.info("Saving driver travel time");
         // body form data
         JSONObject body = new JSONObject();
-        body.put("id", driver);
+        body.put("id", commuter);
         body.put("travel_time", String.valueOf(tripTime));
 
         OkHttpClient client = new OkHttpClient().newBuilder()
@@ -181,6 +184,8 @@ public class Utils {
             String url = jsonObj.getString("url");
             String time = getTotalTime(url);
             String totalTime = convertToMinutes(time);
+            logger.info("Total time is " + totalTime);
+            logger.info(url);
             if (!totalTime.equals("0")) {
                 saveMatch(driver, passenger, totalTime, url);
             } else {
@@ -207,6 +212,7 @@ public class Utils {
 
             driver.get(url);
             logger.info("Done getting url");
+            Thread.sleep(30000);
             return mapsPage.getTime();
         } catch (Exception ex) {
             logger.info("Error getting time " + ex.getMessage());
@@ -270,11 +276,11 @@ public class Utils {
 
     }
 
-    public static String getNewDrivers() {
+    public static String getNewCommuters() {
         URL url;
         HttpURLConnection con;
         try {
-            url = new URI(hostName + "/api/newdrivers").toURL();
+            url = new URI(hostName + "/api/newCommuters").toURL();
             con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("GET");
             con.setDoInput(true);
@@ -341,13 +347,13 @@ public class Utils {
         }
         try {
             ChromeOptions options = new ChromeOptions();
-            options.addArguments("--headless"); // Run in headless mode
-            options.addArguments("--disable-gpu"); // Disable GPU in headless environments
-            options.addArguments("--no-sandbox"); // Disable sandboxing
-            options.addArguments("--disable-dev-shm-usage"); // Use /tmp for shared memory
-            options.addArguments("--disable-software-rasterizer");
-            options.addArguments("--remote-allow-origins=*");
-            options.addArguments("--remote-debugging-port=9222");
+            // options.addArguments("--headless"); // Run in headless mode
+            // options.addArguments("--no-sandbox"); // Disable sandboxing
+            // options.addArguments("--disable-dev-shm-usage"); // Use /tmp for shared
+            // memory
+            // options.addArguments("--disable-software-rasterizer");
+            // options.addArguments("--remote-allow-origins=*");
+            // options.addArguments("--remote-debugging-port=9222");
             if (!isWindows()) {
                 options.addArguments("--disable-gpu");
                 options.addArguments("--headless");

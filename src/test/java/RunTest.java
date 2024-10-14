@@ -12,7 +12,7 @@ public class RunTest {
     public void runTest() {
         while (true) {
             Utils.removeBrokenStatus();
-            Utils.addNewDriverTravelTime();
+            Utils.addNewCommutersTravelTime();
             Utils.processFirstUnmatched();
             try {
                 Thread.sleep(60000);

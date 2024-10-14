@@ -20,10 +20,9 @@ public class MapsPage {
             driver.quit();
             return time;
         } catch (Exception e) {
-            System.out.println("No time found");
+            System.out.println("No time found - " + e.getMessage());
             return time;
         }
-
     }
 
 }
