@@ -32,7 +32,7 @@ public class Utils {
     static String hostName;
 
     static {
-        if (!isWindows()) {
+        if (isWindows()) {
             hostName = "http://localhost:8000";
         } else {
             hostName = "https://ride.hotelrunner.co.za";
@@ -347,16 +347,17 @@ public class Utils {
         }
         try {
             ChromeOptions options = new ChromeOptions();
-            // options.addArguments("--headless"); // Run in headless mode
-            // options.addArguments("--no-sandbox"); // Disable sandboxing
-            // options.addArguments("--disable-dev-shm-usage"); // Use /tmp for shared
-            // memory
-            // options.addArguments("--disable-software-rasterizer");
-            // options.addArguments("--remote-allow-origins=*");
-            // options.addArguments("--remote-debugging-port=9222");
+
             if (!isWindows()) {
                 options.addArguments("--disable-gpu");
                 options.addArguments("--headless");
+
+                // options.addArguments("--headless"); // Run in headless mode
+                options.addArguments("--no-sandbox"); // Disable sandboxing
+                options.addArguments("--disable-dev-shm-usage"); // Use /tmp for share
+                options.addArguments("--disable-software-rasterizer");
+                options.addArguments("--remote-allow-origins=*");
+                options.addArguments("--remote-debugging-port=9222");
             }
             driver = new ChromeDriver(options);
             driver.manage().window().maximize();
