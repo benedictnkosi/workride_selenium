@@ -188,8 +188,6 @@ public class Utils {
             logger.info(url);
             if (!totalTime.equals("0")) {
                 saveMatch(driver, passenger, totalTime, url);
-            } else {
-                updateCommuterStatus(passenger, "broken_address");
             }
         } catch (org.json.JSONException e) {
             logger.severe("Error parsing JSON: " + e.getMessage());
