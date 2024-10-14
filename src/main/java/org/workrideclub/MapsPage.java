@@ -17,7 +17,7 @@ public class MapsPage {
             By by = By.xpath(
                     "//span[@id='section-directions-trip-travel-mode-0']/following-sibling::div//div[contains(@class,'fontHeadlineSmall')]");
             time = driver.findElement(by).getText();
-//            driver.quit();
+            driver.quit();
 
             return time;
         } catch (Exception e) {

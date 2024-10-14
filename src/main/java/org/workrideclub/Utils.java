@@ -198,15 +198,13 @@ public class Utils {
         logger.info("Getting total time");
         try {
 
-            if (driver == null) {
-                logger.info("Creating chrome driver");
-                driver = createDriver();
-                mapsPage = new MapsPage(driver);
-                driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
-                driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
-                driver.manage().window().maximize();
-                logger.info("Done Creating chrome driver");
-            }
+            logger.info("Creating chrome driver");
+            driver = createDriver();
+            mapsPage = new MapsPage(driver);
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
+            driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
+            driver.manage().window().maximize();
+            logger.info("Done Creating chrome driver");
 
             driver.get(url);
             logger.info("Done getting url");
